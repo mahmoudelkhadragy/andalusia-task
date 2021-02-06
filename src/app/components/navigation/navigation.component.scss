@@ -1,0 +1,28 @@
+.active {
+  color: #3f51b5;
+}
+ul {
+  padding: 10px 0;
+  li {
+    margin: 8px 0;
+    a {
+      display: block;
+      text-decoration: none;
+      padding: 5px 10px;
+      font-size: 17px;
+      color: #555;
+      transition: all 0.2s ease-in-out;
+      &.active {
+        color: #3f51b5;
+      }
+      span {
+        font-size: 20px;
+        margin-right: 5px;
+      }
+      &:hover {
+        transform: translate(5px);
+        color: #3f51b5;
+      }
+    }
+  }
+}

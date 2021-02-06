@@ -1,7 +1,38 @@
 <ul class="list-unstyled">
   <li>
-    <a>DashBoard</a>
-    <a>Add Employee</a>
-    <a>DumyLink</a>
+    <a routerLink="/dashboard" routerLinkActive="active">
+      <span
+        ><fa-icon
+          class="mr-1"
+          [icon]="faTachometerAlt"
+          [fixedWidth]="true"
+        ></fa-icon
+      ></span>
+      DashBoard
+    </a>
+  </li>
+  <li>
+    <a routerLink="/employees/addEmployee" routerLinkActive="active">
+      <span
+        ><fa-icon class="mr-1" [icon]="faUserPlus" [fixedWidth]="true"></fa-icon
+      ></span>
+      Add Employee
+    </a>
+  </li>
+  <li>
+    <a routerLink="/employees/searchEmployee" routerLinkActive="active">
+      <span
+        ><fa-icon class="mr-1" [icon]="faSearch" [fixedWidth]="true"></fa-icon
+      ></span>
+      Search Employee
+    </a>
+  </li>
+  <li>
+    <a routerLink="/files" routerLinkActive="active">
+      <span
+        ><fa-icon class="mr-1" [icon]="faFolder" [fixedWidth]="true"></fa-icon
+      ></span>
+      Files
+    </a>
   </li>
 </ul>

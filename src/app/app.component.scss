@@ -1,0 +1,17 @@
+.appWrapper {
+  &__navigation {
+    position: fixed;
+    top: 64px;
+    padding: 10px;
+    width: 16vw;
+    height: 100vh;
+    border-right: 1px solid #ccc;
+  }
+  &__content {
+    margin-left: 16vw;
+    padding: 10px;
+    width: 85vw;
+    height: calc(100vh - 64px);
+    background-color: #f3f2f0;
+  }
+}

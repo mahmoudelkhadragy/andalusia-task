@@ -13,9 +13,10 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatInputModule } from '@angular/material/input';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AddEmployeeComponent } from './components/add-employee/add-employee.component';
+import { SearchEmployeeComponent } from './components/search-employee/search-employee.component';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, NavigationComponent, AddEmployeeComponent],
+  declarations: [AppComponent, HeaderComponent, NavigationComponent, AddEmployeeComponent, SearchEmployeeComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

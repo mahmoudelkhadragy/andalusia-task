@@ -1,0 +1,27 @@
+.navbarTool {
+  display: flex;
+  // justify-content: space-between;
+  &__logo {
+    cursor: pointer;
+    width: 15vw;
+  }
+  &__user {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    &__date {
+      color: #ccc;
+    }
+    &__info {
+      display: flex;
+      align-items: center;
+      p {
+        cursor: pointer;
+      }
+      img {
+        border-radius: 50%;
+      }
+    }
+  }
+}

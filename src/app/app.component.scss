@@ -1,4 +1,5 @@
 .appWrapper {
+  overflow: hidden;
   &__navigation {
     position: fixed;
     top: 64px;
@@ -10,7 +11,7 @@
   &__content {
     margin-left: 16vw;
     padding: 10px;
-    width: 85vw;
+    width: 84vw;
     height: calc(100vh - 64px);
     background-color: #f3f2f0;
   }

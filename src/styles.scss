@@ -11,3 +11,11 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+
+// mat forms styles
+.mat-form-field {
+  width: 100%;
+}
+.mat-form-field-appearance-fill .mat-form-field-flex {
+  background-color: #fff !important;
+}

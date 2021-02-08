@@ -14,6 +14,7 @@ export class AddEmployeeComponent implements OnInit {
   departments: Department[] = [];
   genders = ['Male', 'Female'];
   employeeForm: FormGroup;
+  empadded = false;
 
   constructor(
     private datePipe: DatePipe,
@@ -47,6 +48,10 @@ export class AddEmployeeComponent implements OnInit {
     };
     if (this.employeeForm.valid) {
       this.empService.addEmployee(employeeForm);
+      this.empadded = true;
+      setTimeout(() => {
+        this.empadded = false;
+      }, 1000);
     }
   }
 

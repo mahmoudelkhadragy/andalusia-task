@@ -1,12 +1,12 @@
 <mat-toolbar class="navbarTool" color="primary">
-  <h2 class="navbarTool__logo">Logo</h2>
+  <h2 class="navbarTool__logo" routerLink="/">Logo</h2>
   <div class="navbarTool__user">
-    <h4 class="navbarTool__user__date">date</h4>
+    <h4 class="navbarTool__user__date">{{ today | date }}</h4>
     <div class="navbarTool__user__info">
       <p class="mb-0 mr-2">
         <fa-icon class="mr-1" [icon]="faSortDown"></fa-icon> Ahmed Mohamed Adel
       </p>
-      <img class="img-fluid" src="https://via.placeholder.com/45" alt="user" />
+      <img class="img-fluid" src="https://via.placeholder.com/35" alt="user" />
     </div>
   </div>
 </mat-toolbar>

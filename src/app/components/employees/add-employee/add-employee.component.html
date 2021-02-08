@@ -1,104 +1,117 @@
 <div class="empForm mt-3">
-  <form (ngSubmit)="addEmplyee(employeeForm)" #employeeForm="ngForm">
+  <form [formGroup]="employeeForm" (ngSubmit)="addEmployee()">
     <div class="form-row">
-      <div class="form-group col-md-6">
-        <label for="empName">Employee Name *</label>
-        <input
-          type="text"
-          id="empName"
-          class="form-control"
-          ngModel
-          name="empName"
-          required
-        />
+      <div class="col-12 col-sm-12 col-md-6 mb-2">
+        <mat-form-field appearance="outline">
+          <mat-label>Employee Name</mat-label>
+          <input
+            type="text"
+            matInput
+            required
+            id="empName"
+            formControlName="empName"
+          />
+          <mat-error
+            *ngIf="employeeForm.controls['empName'].hasError('required')"
+          >
+            Employee Name is required
+          </mat-error>
+        </mat-form-field>
       </div>
 
-      <div class="form-group col-md-6">
-        <label for="department">Department *</label>
-        <select id="department" class="form-control">
-          <option *ngFor="let dep of departments">{{ dep.depName }}</option>
-        </select>
+      <div class="col-12 col-sm-12 col-md-6 mb-2">
+        <mat-form-field appearance="outline">
+          <mat-label>Department</mat-label>
+          <mat-select
+            required
+            matInput
+            id="empDepartment"
+            formControlName="empDepartment"
+          >
+            <mat-option *ngFor="let dep of departments" [value]="dep.id">{{
+              dep.depName
+            }}</mat-option>
+          </mat-select>
+          <mat-error
+            *ngIf="employeeForm.controls['empDepartment'].hasError('required')"
+          >
+            Department is required
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="col-12 col-sm-12 col-md-6 mb-2">
+        <mat-form-field appearance="outline">
+          <mat-label>Employee Code</mat-label>
+          <input
+            type="text"
+            matInput
+            required
+            id="empCode"
+            pattern="\d+"
+            formControlName="empCode"
+          />
+          <mat-error
+            *ngIf="
+              employeeForm.controls['empCode'].hasError('required') &&
+              !employeeForm.controls['empCode'].hasError('pattern')
+            "
+          >
+            Employee Code is required
+          </mat-error>
+          <mat-error
+            *ngIf="
+              employeeForm.controls['empCode'].hasError('pattern') &&
+              !employeeForm.controls['empCode'].hasError('required')
+            "
+          >
+            Employee Code must be positive numbers
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-12 col-sm-12 col-md-6 mb-2">
+        <mat-form-field appearance="fill">
+          <mat-label>Birthday</mat-label>
+          <input
+            matInput
+            required
+            formControlName="empBirthDate"
+            [matDatepicker]="picker"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div class="col-12 col-sm-12mb-2">
+        <div class="d-flex align-items-center gender_section">
+          <div class="d-flex align-items-center">
+            <h3 class="mr-4 mt-1">Gender:</h3>
+            <mat-radio-group
+              formControlName="empGender"
+              aria-label="Select an option"
+            >
+              <mat-radio-button
+                color="primary"
+                class="mr-4"
+                [value]="gender"
+                *ngFor="let gender of genders"
+                >{{ gender }}</mat-radio-button
+              >
+            </mat-radio-group>
+          </div>
+          <button
+            type="submit"
+            class="submit_form"
+            mat-raised-button
+            color="primary"
+          >
+            Add Employee
+          </button>
+        </div>
       </div>
     </div>
   </form>
 </div>
-<!-- <div class="row">
-    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
-      <form (ngSubmit)="addEmplyee()" #form="ngForm">
-        <div id="user-data" ngModelGroup="userData" #userData="ngModelGroup">
-          <div class="form-group">
-            <label for="username">Username</label>
-            <input
-              type="text"
-              id="username"
-              class="form-control"
-              ngModel
-              name="username"
-              required
-            />
-          </div>
-          <button
-            (click)="suggestUserName()"
-            class="btn btn-default"
-            type="button"
-          >
-            Suggest an Username
-          </button>
-          <div class="form-group">
-            <label for="email">Mail</label>
-            <input
-              type="email"
-              id="email"
-              class="form-control"
-              ngModel
-              name="email"
-              required
-              email
-              #email="ngModel"
-            />
-            <span class="error" *ngIf="email.invalid && email.touched"
-              >Please enter a valid email</span
-            >
-          </div>
-        </div>
-        <p class="error" *ngIf="userData.invalid && userData.touched">
-          please enter valid user data
-        </p>
-        <div class="form-group">
-          <label for="secret">Secret Questions</label>
-          <select
-            id="secret"
-            class="form-control"
-            [ngModel]="question"
-            name="secret"
-          >
-            <option value="pet">Your first Pet?</option>
-            <option value="teacher">Your first teacher?</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <textarea
-            class="form-control"
-            name="questionAnswer"
-            required
-            rows="3"
-            [(ngModel)]="answer"
-          ></textarea>
-          <p>Your reply: {{ answer }}</p>
-        </div>
-        <div class="radio" *ngFor="let gender of genders">
-          <label>
-            <input
-              type="radio"
-              name="gender"
-              [ngModel]="genders[0]"
-              [value]="gender"
-            />{{ gender }}
-          </label>
-        </div>
-        <button [disabled]="form.invalid" class="btn btn-primary" type="submit">
-          Submit
-        </button>
-      </form>
-    </div>
-  </div> -->

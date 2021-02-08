@@ -1,1 +1,79 @@
-<p>search-employee works!</p>
+<div class="empForm mt-3">
+  <form [formGroup]="searchEmp" (ngSubmit)="searchEmployee()">
+    <div class="form-row">
+      <div class="col-12 col-sm-12 col-md-4 mb-2">
+        <mat-form-field appearance="outline">
+          <mat-label>Employee Name</mat-label>
+          <input
+            type="text"
+            matInput
+            required
+            id="empName2"
+            formControlName="empName"
+          />
+          <mat-error *ngIf="searchEmp.controls['empName'].hasError('required')">
+            Employee Name is required
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="col-12 col-sm-12 col-md-4 mb-2">
+        <mat-form-field appearance="outline">
+          <mat-label>Department</mat-label>
+          <mat-select
+            required
+            matInput
+            id="empDep"
+            formControlName="empDepartment"
+          >
+            <mat-option *ngFor="let dep of departments" [value]="dep.id">{{
+              dep.depName
+            }}</mat-option>
+          </mat-select>
+          <mat-error
+            *ngIf="searchEmp.controls['empDepartment'].hasError('required')"
+          >
+            Department is required
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-12 col-sm-12 col-md-4 mb-2">
+        <button
+          type="submit"
+          class="submit_form mt-2 mx-auto d-block"
+          mat-raised-button
+          color="primary"
+        >
+          Search Employee
+        </button>
+      </div>
+    </div>
+  </form>
+
+  <div class="my-2" *ngIf="empSrearchResult.length > 0">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Department</th>
+          <th scope="col">Code</th>
+          <th scope="col">Birthday</th>
+          <th scope="col">Gender</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let dep of empSrearchResult">
+          <th scope="row">
+            <mat-checkbox color="primary" class="example-margin"></mat-checkbox>
+          </th>
+          <td>{{ dep.empName }}</td>
+          <td>{{ getDepName(dep.empDepartment) }}</td>
+          <td>{{ dep.empCode }}</td>
+          <td>{{ dep.empBirthDate }}</td>
+          <td>{{ dep.empGender }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

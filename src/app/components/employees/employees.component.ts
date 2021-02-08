@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+// import { Employee } from './../../models/eployee.model';
+// import { EmployeesService } from './../../services/employees.service';
 
 @Component({
   selector: 'app-employees',
@@ -6,7 +8,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./employees.component.scss'],
 })
 export class EmployeesComponent implements OnInit {
+  // employees: Employee[] = [];
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    // this.getEmployeesFromStorage();
+  }
+
+  // getEmployeesFromStorage(): void {
+  //   const empsString = localStorage.getItem('employees');
+  //   let empArr;
+  //   if (empsString) {
+  //     empArr = JSON.parse(empsString);
+  //   }
+  //   console.log(empArr);
+  //   this.empService.employeesUpdate.subscribe((employees: Employee[]) => {
+  //     this.employees = employees;
+  //   });
+  // }
 }

@@ -8,6 +8,7 @@ import { faSortDown } from '@fortawesome/free-solid-svg-icons';
 })
 export class HeaderComponent implements OnInit {
   faSortDown = faSortDown;
+  today = new Date();
   constructor() {}
 
   ngOnInit(): void {}
